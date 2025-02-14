@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { InvestmentResults } from '../../Models/investment.model';
 
 @Component({
   selector: 'app-investment-results',
@@ -8,25 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './investment-results.component.css',
 })
 export class InvestmentResultsComponent {
-  // onCalculateInvestmentResults() {
-  //   const annualData = [];
-  //   let investmentValue = this.initialInvestment;
-  //   for (let i = 0; i < this.duration; i++) {
-  //     const year = i + 1;
-  //     const interestEarnedInYear =
-  //       investmentValue * (this.expectedReturn / 100);
-  //     investmentValue += interestEarnedInYear + this.annualInvestment;
-  //     const totalInterest =
-  //       investmentValue - this.annualInvestment * year - this.initialInvestment;
-  //     annualData.push({
-  //       year: year,
-  //       interest: interestEarnedInYear,
-  //       valueEndOfYear: investmentValue,
-  //       annualInvestment: this.annualInvestment,
-  //       totalInterest: totalInterest,
-  //       totalAmountInvested:
-  //         this.initialInvestment + this.annualInvestment * year,
-  //     });
-  //   }
-  // }
+  @Input() investmentCalculationResult: InvestmentResults[];
+
+  ngAfterViewChanges() {
+    console.log('inside result comp', this.investmentCalculationResult);
+  }
 }
